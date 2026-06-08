@@ -421,7 +421,7 @@ export default function DepositMethod() {
         <div className="p-6 rounded-3xl shad-brand-card border shadow-lg">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-black text-xl text-primary">{getMethodSubtitle(method)}</h2>
-            <div className="text-xs px-2 py-1 rounded-full bg-primary/15 text-primary">XPay</div>
+            <div className="text-xs px-2 py-1 rounded-full bg-primary/15 text-primary">Shad</div>
           </div>
 
           {method.instructions && (

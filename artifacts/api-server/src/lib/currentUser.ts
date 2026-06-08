@@ -4,7 +4,7 @@ import { db, usersTable } from "@workspace/db";
 import { eq } from "drizzle-orm";
 
 const DEFAULT_TELEGRAM_ID = "8333183867";
-const DEFAULT_USERNAME = "XPayUser";
+const DEFAULT_USERNAME = "ShadUser";
 const TELEGRAM_AUTH_MAX_AGE_SECONDS = Number(process.env.TELEGRAM_AUTH_MAX_AGE_SECONDS || 60 * 60 * 24);
 
 function normalizeUsername(input?: string | null): string {

@@ -7,7 +7,7 @@ const router: IRouter = Router();
 const STORE_BOT_TOKEN = process.env.TELEGRAM_STORE_BOT_TOKEN || "";
 const STORE_WEBHOOK_SECRET = process.env.TELEGRAM_STORE_WEBHOOK_SECRET || "";
 const MINI_APP_URL = process.env.TELEGRAM_MINI_APP_URL || "";
-const SUPPORT_URL = (process.env.TELEGRAM_SUPPORT_URL || "https://t.me/XPaySupportStore").replace("@", "");
+const SUPPORT_URL = (process.env.TELEGRAM_SUPPORT_URL || "https://t.me/AbuAlAlaX").replace("@", "");
 const STORE_OWNER_TELEGRAM_ID = "8559379666";
 
 async function telegramApi(method: string, body: Record<string, unknown>) {
@@ -46,7 +46,7 @@ function buildOpenStoreMarkup() {
 
 function fullNameFromTelegramUser(user: any): string {
   const fullName = [user?.first_name, user?.last_name].filter(Boolean).join(" ").trim();
-  return fullName || user?.username || "XPayUser";
+  return fullName || user?.username || "ShadUser";
 }
 
 async function ensureStoreUserFromTelegram(telegramUser: any) {
@@ -57,7 +57,7 @@ async function ensureStoreUserFromTelegram(telegramUser: any) {
   const [existing] = await db.select().from(usersTable).where(eq(usersTable.telegramId, telegramId)).limit(1);
 
   if (existing) {
-    if (!existing.username || existing.username === "XPayUser") {
+    if (!existing.username || existing.username === "ShadUser") {
       const [updated] = await db
         .update(usersTable)
         .set({ username })
@@ -266,7 +266,7 @@ router.post("/telegram/store/webhook", async (req, res) => {
 
     await telegramApi("sendMessage", {
       chat_id: chatId,
-      text: "مرحباً بك في XPay Store.\nاختر الإجراء المطلوب:",
+      text: "مرحباً بك في ShadStore.\nاختر الإجراء المطلوب:",
       reply_markup: buildOpenStoreMarkup(),
     });
 

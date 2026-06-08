@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: shadstore-api
+    runtime: node
+    plan: starter
+    buildCommand: pnpm install && pnpm run build
+    startCommand: node dist/index.mjs
+    workingDirectory: artifacts/api-server
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: PUBLIC_API_BASE_URL
+        value: https://shadstore.onrender.com
+      - key: API_PUBLIC_URL
+        value: https://shadstore.onrender.com
+      - key: CLIENT_URL
+        value: https://shadstore-zeta.vercel.app,https://shad-admin-api-server.vercel.app
+      - key: LOG_LEVEL
+        value: info
+
+databases:
+  - name: shadstore-db
+    plan: starter
